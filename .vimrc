@@ -1,5 +1,7 @@
 execute pathogen#infect()
 syntax on
+set background=light
+colorscheme solarized
 filetype plugin indent on
 
 set tabstop=4
