@@ -2,6 +2,10 @@ execute pathogen#infect()
 filetype plugin indent on
 syntax on
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" builtin settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "colors
 set background=light
 colorscheme solarized
@@ -33,7 +37,6 @@ set wildmenu
 set wildmode=full
 
 "statusline stolen from @zonika
-
 set statusline=%<%f
 set statusline+=\ %w%h%m%r
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%
@@ -48,7 +51,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd filetype lisp,scheme setlocal equalprg=scmindent.rkt
 
 "web
-let g:jsx_ext_required = 0 "jsx in html OK
 autocmd filetype html,javascript,css,jsx,scss,json,jade setlocal shiftwidth=2 tabstop=2 "2 spaces for web
 
 "md is markdown
@@ -57,3 +59,18 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "illegal bin2hex hex2bin
 let @b=':%!xxd -r'
 let @t=':%!xxd'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" plugin settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"vim-jsx
+let g:jsx_ext_required = 0 "jsx in html OK
+
+"tslime.vim
+let g:tslime_always_current_session = 1 "force current session
+let g:tslime_always_current_window = 1 "force current window
+
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+nmap <C-c>r <Plug>SetTmuxVars
