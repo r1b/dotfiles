@@ -1,41 +1,59 @@
 execute pathogen#infect()
+filetype plugin indent on
 syntax on
+
+"colors
 set background=light
 colorscheme solarized
-filetype plugin indent on
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set softtabstop=4
-set smarttab
-set number
-set backspace=2
-set autoindent
+"display
+set colorcolumn=80
+set cursorline
+set grepprg=ag\ --nogroup\ --nocolor
+set laststatus=2
+set list listchars=tab:»·,trail:·
 set noruler
+set number
+set showmatch
+
+"behavior
+set autoindent
+set backspace=2
+set expandtab
+set hidden
+set ignorecase
 set incsearch
+set nowrap
+set shiftwidth=4
+set smarttab
+set smartcase
+set softtabstop=4
+set tabstop=4
 set wildmenu
 set wildmode=full
-set cursorline
-set laststatus=2
-set hidden
-set colorcolumn=80
-set list listchars=tab:»·,trail:·
-set grepprg=ag\ --nogroup\ --nocolor
-set ignorecase
+
+"statusline stolen from @zonika
+
+set statusline=%<%f
+set statusline+=\ %w%h%m%r
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%
+
+"omnicompletion
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
 "scheme
 autocmd filetype lisp,scheme setlocal equalprg=scmindent.rkt
 
-"jsx
-let g:jsx_ext_required = 0
-
-"2 spaces for web stuff
-autocmd filetype html,javascript,css,jsx,scss,json,jade setlocal shiftwidth=2 tabstop=2
+"web
+let g:jsx_ext_required = 0 "jsx in html OK
+autocmd filetype html,javascript,css,jsx,scss,json,jade setlocal shiftwidth=2 tabstop=2 "2 spaces for web
 
 "md is markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-"v illegal
+"illegal bin2hex hex2bin
 let @b=':%!xxd -r'
 let @t=':%!xxd'
