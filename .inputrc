@@ -1,0 +1,14 @@
+# Hard mode
+
+# No arrow keys
+"\eOA":""
+"\e[A":""
+"\eOB":""
+"\e[B":""
+"\eOC":""
+"\e[C":""
+"\eOD":""
+"\e[D":""
+
+# No backspace
+"\e[3~":""
