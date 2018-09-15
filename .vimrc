@@ -11,6 +11,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'flowtype/vim-flow'
+Plugin 'https://git.foldling.org/vim-scheme.git'
 call vundle#end()
 
 filetype plugin indent on
@@ -51,6 +52,7 @@ autocmd filetype lisp,scheme setlocal formatprg=scmindent
 setl lispwords+=let-values,condition-case,with-input-from-string
 setl lispwords+=with-output-to-string,handle-exceptions,call/cc,rec,receive
 setl lispwords+=call-with-output-file
+let g:is_chicken = 1
 
 "jsx
 let g:jsx_ext_required = 0
