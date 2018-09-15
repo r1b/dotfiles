@@ -10,6 +10,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'flowtype/vim-flow'
 call vundle#end()
 
 filetype plugin indent on
@@ -39,18 +40,27 @@ set grepprg=ag\ --nogroup\ --nocolor
 set ignorecase
 set synmaxcol=256
 
+"autoformat
+autocmd BufWritePre * :normal ==
+
+"autoclose parens
+inoremap ( ()<left>
+
 "scheme
-autocmd filetype lisp,scheme setlocal equalprg=scmindent.rkt
+autocmd filetype lisp,scheme setlocal formatprg=scmindent
+setl lispwords+=let-values,condition-case,with-input-from-string
+setl lispwords+=with-output-to-string,handle-exceptions,call/cc,rec,receive
+setl lispwords+=call-with-output-file
 
 "jsx
 let g:jsx_ext_required = 0
 
-"2 spaces for web stuff
+"web
 autocmd filetype html,javascript,jsx,scss,json setlocal shiftwidth=2 tabstop=2
 
-"md is markdown
+"markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-"v illegal
+"binary data
 let @b=':%!xxd -r'
 let @t=':%!xxd'
